@@ -1,0 +1,63 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-image:url("bg1.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.my-navigation{
+    border-bottom: 1px  solid white;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 70px;
+    padding-top: 25px;
+    padding-left: 10px;
+    padding-right: 15px;
+    font-family: "Comic Sans MS", serif;
+}
+#my-brand-navigation{
+    font-size: 20pt;
+    display: inline;
+    color: white!important;
+}
+#navigation-items{
+    font-size: 15pt;
+    float: right;
+    display: inline;
+}
+.navigation-item{
+    color: white;
+    margin-left: 7px;
+    display: inline;
+}
+a{
+    text-decoration: none!important;
+}
+section{
+    background-color: rgba(0,0,0,0.5);
+    min-height: 50vw;
+    margin-left: 10%;
+    padding-top: 20px;
+    width: 80%;
+}
+#info_block {
+    padding-top: 80px;
+    padding-left: 20px;
+    padding-right: 15px;
+    font-family: "Comic Sans MS", serif;
+    color: white;
+}
+.what-to-do{
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    font-size: 20pt;
+    color: #7abaff;
+}
+.title{
+    text-align: center;
+    font-family: "Comic Sans MS", serif;
+    color: white;
+}

@@ -1,0 +1,17 @@
+{% extends 'mainapp/wrapper.html' %}
+{% load staticfiles%}
+{% block content %}
+
+{% include "mainapp/nav.html"%}
+<section>
+<div class="post">
+    <form action="" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% include 'mainapp/form-template.html' %}
+        <div class="form-group">
+                <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+        </div>
+    </form>
+</div>
+</section>
+{% endblock %}

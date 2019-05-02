@@ -1,0 +1,34 @@
+
+{% include "mainapp/nav.html"%}
+<section>
+
+    {% if user.is_authenticated %}
+        <div class="col-md-6">
+    {% else %}
+        <div class="col-md-12">
+    {% endif%}
+        <div id="info_block">
+            <div class="what-to-do">
+                <h2><span class="glyphicon glyphicon-book"></span>  Читайте о том, что вам интересно.<br></h2>
+                <h2><span class="glyphicon glyphicon-bullhorn"></span> Узнавайте, что обсуждают люди.<br></h2>
+                <h2><span class="glyphicon glyphicon-comment"></span> Присоединяйтесь к переписке.<br></h2>
+            </div>
+        </div>
+    </div>
+
+    {% if user.is_authenticated %}
+    <div class="col-md-6">
+        <h2 class="title">Other people</h2>
+
+        {% for o_user in users%}
+        <div class="card" style="padding-left: 10px; margin: 10px">
+        <a href="{% url 'profile' o_user.id %}">
+            <h4>{{o_user.username}}</h4>
+        </a>
+        </div>
+
+        {% endfor %}
+
+    </div>
+    {% endif %}
+</section>

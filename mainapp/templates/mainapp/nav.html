@@ -1,0 +1,36 @@
+<div class="my-navigation">
+    <a href="/"><div id="my-brand-navigation">Socium</div></a>
+    <div id="navigation-items">
+        {% if user.is_authenticated %}
+        <div class="nav-item dropdown navigation-item">
+            <a href="#" data-toggle="dropdown">
+                <div class="navigation-item dropdown-toggle" id="navbarDropdown" aria-haspopup="true"  aria-expanded="false">{{request.user.username}}</div>
+            </a>
+
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'logout' %} ">Logout</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'profile' request.user.id %}">My profile</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="nav-item dropdown navigation-item">
+            <a href="#" data-toggle="dropdown">
+                <div class="navigation-item dropdown-toggle" id="navbarDropdown" aria-haspopup="true"  aria-expanded="false"> Login</div>
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="{% url 'login' %}">Sign in</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="{% url 'register' %}">Sign up</a>
+            </div>
+        </div>
+        {% endif %}
+        {% if request.user.is_authenticated  and request.user.is_staff %}
+        <a href="/admin/"><div class="navigation-item">Admin</div></a>
+        {% endif %}
+        {% if user.is_authenticated %}
+        <a href="{% url 'add_post' %}"><div class="navigation-item"><span class="glyphicon glyphicon-plus" area-hidden="true"></span>Add post</div></a>
+        {% endif %}
+        <a href="{% url 'posts' %}"><div class="navigation-item">News</div></a>
+    </div>
+</div>

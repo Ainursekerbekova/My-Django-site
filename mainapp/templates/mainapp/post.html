@@ -1,0 +1,38 @@
+{% extends 'mainapp/wrapper.html' %}
+{% load staticfiles%}
+{% block content %}
+{% include "mainapp/nav.html"%}
+<section>
+{% if error_message %}
+<p><strong>{{error_message}}</strong></p>
+{% endif %}
+
+
+<div class="post">
+    <h2> {{post.title}}</h2>
+    <h4>Author:{{post.user.username}}</h4>
+    {% if post.img %}
+        <div id="post-img">
+            <div class="for-img-big">
+                <img src="{{post.img.url}}">
+            </div>
+        </div>
+    {% endif %}
+    <p id="post-body">{{post.body}}</p>
+    {% if post.is_saved %}
+        <img class="star" src="{% static 'images/icons/star.png' %}" >
+    {% endif %}
+
+
+    <div class="flex-container">
+        {% if not post.is_saved %}
+        <a href="{% url 'post_save' post.id 'one'%}" class="btn btn-info" >Save</a>
+        {% endif %}
+        <a href="{% url 'post_like' post.id 'one'%}" class="btn btn-info" >{{post.likes}} Like</a>
+        <a href="{% url 'delete_post' post.id %}" class="btn btn-danger" >Delete</a>
+        <a href="{% url 'update_post' post.id %}" class="btn btn-info" >Edit</a>
+    </div>
+</div>
+    </section>
+
+{% endblock %}

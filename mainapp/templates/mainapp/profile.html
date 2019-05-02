@@ -1,0 +1,48 @@
+{% extends 'mainapp/wrapper.html' %}
+{% load staticfiles%}
+{% block content %}
+{% include "mainapp/nav.html"%}
+<section>
+        <h2 class="title"> {{user.username}}</h2>
+        <h2 class="title"> {{user.email}}</h2>
+
+        {% if object_list %}
+                {% for post in object_list%}
+
+                <div class="post">
+                    <a href="{% url 'details' post.id %}"><h2> {{post.title}}</h2></a>
+
+                    <div class="flex-container">
+                        {% if post.img %}
+                        <div id="post-img">
+                            <div class="for-img-little">
+                                <img src="{{post.img.url}}">
+                            </div>
+                        </div>
+                        {% endif %}
+                        <p id="post-body">{{post.body}}</p>
+                    </div>
+
+                    {% if post.is_saved %}
+                    <img class="star" src="{% static 'images/icons/star.png' %}" >
+                    {% endif %}
+
+                    <div class="flex-container">
+                        {% if not post.is_saved %}
+                        <a href="{% url 'post_save' post.id 'all'%}" class="btn btn-info" >Save</a>
+                        {% endif %}
+                        <a href="{% url 'post_like' post.id 'all'%}" class="btn btn-info" >{{post.likes}} Like</a>
+                        <a href="{% url 'delete_post' post.id %}" class="btn btn-danger" >Delete</a>
+                        <a href="{% url 'update_post' post.id %}" class="btn btn-info" >Edit</a>
+                    </div>
+                </div>
+                {% endfor %}
+        {% else %}
+        <div class="post">
+            <h2> Sorry</h2>
+            This person doesn't have posts yet
+        </div>
+        {% endif %}
+</section>
+
+{% endblock %}
